@@ -1,37 +1,4 @@
-// NOTE - FILE NO LONGER NEEDED!!!
-
-
-class Game {
-  constructor(numberOfRows, numberOfColumns, numberOfBombs) {
-    this._board = new Board(numberOfRows, numberOfColumns, numberOfBombs);
-  }
-
-  // main game functionality
-  playMove(rowIndex, columnIndex) {
-    this._board.flipTile(rowIndex, columnIndex);
-
-    // bomb was hit - game over ******ISSUE WITH IF STATEMENT*******
-    if(this._board.playerBoard[rowIndex][columnIndex] === 'B') {
-      console.log('Game over!');
-      this._board.print();
-    }
-
-    // no safe tiles left - game won
-    else if(!this._board.hasSafeTiles()) {
-      console.log('Congrats! You win!');
-    }
-
-    // user continues playing
-    else {
-      console.log('Current Board: ');
-      this._board.print();
-    }
-  }
-}
-
-
-
-class Board {
+export class Board {
   constructor(numberOfRows, numberOfColumns, numberOfBombs) {
     this._numberOfBombs = numberOfBombs;
     this._numberOfTiles = numberOfRows * numberOfColumns;
@@ -181,8 +148,3 @@ class Board {
 
 
 }
-
-
-// test code
-const g = new Game(3, 3, 3);
-g.playMove(1,1);
